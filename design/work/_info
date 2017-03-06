@@ -1,0 +1,378 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/users/ugrad2/2015/fall/julianma/EECS132_L/lab-2/Lab-2/design
+vadder
+Z1 DXx6 sv_std 3 std 0 22 WmjPaeP=7F5?QFXzJ>D[Q2
+Z2 !s110 1487726309
+!i10b 1
+!s100 CeQgj>T94JNOAbCSKZSSG0
+IIUo0YU?;DAC3TcFiG<8Vb2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder_sv_unit
+S1
+R0
+w1486834044
+8../design/adder.sv
+F../design/adder.sv
+L0 1
+Z4 OL;L;10.4c;61
+r1
+!s85 0
+31
+Z5 !s108 1487726309.000000
+Z6 !s107 ../design/imem.sv|../design/dmem.sv|../design/top.sv|../design/arm.sv|../design/regfile.sv|../design/mux2.sv|../design/flopr.sv|../design/flopenr.sv|../design/extend.sv|../design/decoder.sv|../design/datapath.sv|../design/controller.sv|../design/condlogic.sv|../design/condcheck.sv|../design/alu.sv|../design/adder.sv|
+Z7 !s90 -64|-sv|-f|rtl.cfg|
+!i113 0
+Z8 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+valu
+R1
+R2
+!i10b 1
+!s100 gfBhOKZGjDajY9;Wn?KO51
+I^A?8g_1ji49gf?>KZa<710
+R3
+!s105 alu_sv_unit
+S1
+R0
+w1487224642
+8../design/alu.sv
+F../design/alu.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+varm
+R1
+R2
+!i10b 1
+!s100 PJM;]NU:09Am^>W:LjkLP0
+I[9_CC:Q2Azg?=DRGc[]cT1
+R3
+!s105 arm_sv_unit
+S1
+R0
+w1487499978
+8../design/arm.sv
+F../design/arm.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vcondcheck
+R1
+R2
+!i10b 1
+!s100 cYjKC@``cgj8PWGfI[m?22
+I@=KAGJT:h`42URa7hPlbd1
+R3
+Z9 !s105 condlogic_sv_unit
+S1
+R0
+Z10 w1487496122
+Z11 8../design/condlogic.sv
+Z12 F../design/condlogic.sv
+L0 29
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vcondlogic
+R1
+R2
+!i10b 1
+!s100 g[RAna;PQRkS[SfXO><L`1
+I1e1XdOQ7z6z>B9bXF<S4c3
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vcontroller
+R1
+R2
+!i10b 1
+!s100 WdKYDlz<`ThFknaYaD@<N2
+I[DK_Z1GY2BZ9nkf<b20DA1
+R3
+!s105 controller_sv_unit
+S1
+R0
+w1487224659
+8../design/controller.sv
+F../design/controller.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vdatapath
+R1
+R2
+!i10b 1
+!s100 >Q:N2BQ7gejBka0?I=7XP2
+IX=79>@aNH`A48IQ;0SWIQ2
+R3
+!s105 datapath_sv_unit
+S1
+R0
+w1487224653
+8../design/datapath.sv
+F../design/datapath.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vdecoder
+R1
+R2
+!i10b 1
+!s100 zEOhQg<5m3dhihoa;=O1j2
+IB65zXjgNCeRMlCnfc?@0S3
+R3
+!s105 decoder_sv_unit
+S1
+R0
+w1487224673
+8../design/decoder.sv
+F../design/decoder.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vdmem
+R1
+R2
+!i10b 1
+!s100 KYaBM2HYKmjTe;3[8bc250
+I;R4H9<El2JFhKL0HeXmlS3
+R3
+!s105 dmem_sv_unit
+S1
+R0
+w1487726179
+8../design/dmem.sv
+F../design/dmem.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vextend
+R1
+R2
+!i10b 1
+!s100 PE_;JmbiQV8m7L]TL>`iN2
+IbbGnCoC?BSEMkg`:JOo6l2
+R3
+!s105 extend_sv_unit
+S1
+R0
+Z13 w1486834042
+8../design/extend.sv
+F../design/extend.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vflopenr
+R1
+R2
+!i10b 1
+!s100 G002>NTQd0Qf[h>hn@Y0G0
+I[?=U4>fWdYDP?Y5LnPBi60
+R3
+!s105 flopenr_sv_unit
+S1
+R0
+R13
+8../design/flopenr.sv
+F../design/flopenr.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vflopr
+R1
+R2
+!i10b 1
+!s100 Fc9=3o9Q9GdSA<PO?Ui2Y2
+I10eR[P_DEACg?ch2<aWV20
+R3
+!s105 flopr_sv_unit
+S1
+R0
+R13
+8../design/flopr.sv
+F../design/flopr.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vimem
+R1
+R2
+!i10b 1
+!s100 hLDPbi0diBk4o:JTN6abG2
+Ie=V]=bg^:MCFY?D=SDX5]3
+R3
+!s105 imem_sv_unit
+S1
+R0
+w1487496999
+8../design/imem.sv
+F../design/imem.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vmux2
+R1
+R2
+!i10b 1
+!s100 `ePC:YQM:GL4TQf9bRPU?0
+IlP]zVN[7k@[We0bU5EiRe0
+R3
+!s105 mux2_sv_unit
+S1
+R0
+R13
+8../design/mux2.sv
+F../design/mux2.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vregfile
+R1
+R2
+!i10b 1
+!s100 EC45d0lY`kSfIFGd>;1zb1
+Ii^:_cg<NbfamhA[]d<1f40
+R3
+!s105 regfile_sv_unit
+S1
+R0
+R13
+8../design/regfile.sv
+F../design/regfile.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+vtop
+R1
+R2
+!i10b 1
+!s100 0MUJG>4:04NG4ci5nfjOP3
+I^0d0SeMfQJQQ;d>3JQTD`1
+R3
+!s105 top_sv_unit
+S1
+R0
+w1487500298
+8../design/top.sv
+F../design/top.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8

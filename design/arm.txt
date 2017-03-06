@@ -1,0 +1,24 @@
+module arm(	input logic clk, reset,
+		output logic [31:0] PC,
+		input logic [31:0] Instr,
+		output logic MemWrite,
+		output logic [3:0] ByteEnable,
+		output logic [31:0] ALUResult, WriteData,
+		input logic [31:0] ReadData
+	);
+
+	logic [3:0] ALUFlags;
+	logic [3:0] StatusRegister;
+	logic RegWrite, ALUSrc, MemtoReg, PCSrc;
+	logic [1:0] RegSrc, ImmSrc, ALUControl;
+
+	controller c(clk, reset, Instr[31:0], ALUFlags, StatusRegister,
+			RegSrc, RegWrite, ImmSrc, ALUSrc, ALUControl,
+			MemWrite, ByteEnable, MemtoReg, PCSrc);
+
+	datapath dp(clk, reset, 
+			RegSrc, RegWrite, ImmSrc, ALUSrc, ALUControl,
+			MemtoReg, PCSrc, ALUFlags, StatusRegister, PC, Instr, ALUResult,
+			WriteData, ReadData);
+
+endmodule
