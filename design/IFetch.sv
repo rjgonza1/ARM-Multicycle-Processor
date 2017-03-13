@@ -1,5 +1,5 @@
 module IFetch(
-	input logic clk, reset, stall,
+	input logic clk, reset, StallF,
 	input logic [31:0] PC,
 	output logic [31:0] InstrF, PCPlus4F);
 	
