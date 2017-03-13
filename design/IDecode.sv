@@ -5,7 +5,7 @@ module IDecode(
      output logic [1:0] FlagWriteD, 
     	output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, Rs,
     	output logic [3:0] byteEnable, ALUControlD,   
-     output logic [31:0] SrcAD, SrcBD, ExtImmD,
+     output logic [31:0] SrcAD, SrcBD, ExtImmD
 //   output logic BranchD   implement this when decoder is changed to output BranchD
      );
 
@@ -14,7 +14,7 @@ module IDecode(
     logic branch_link;
 
 // flop
-    floprr #(32) IDReg(clk, reset, InstrF, InstD);
+    flopr #(32) IDReg(clk, reset, InstrF, InstD);
 
 // decoder
     decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
