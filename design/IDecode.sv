@@ -1,12 +1,10 @@
 module IDecode(
-	input logic clk, reset,
+	input logic clk, reset, RegWriteW,
 	input logic [31:0] InstrF, PCPlus8, ResultW,
-	input logic RegWriteW, 
+     output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
-	output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, Rs,
 	output logic [3:0] byteEnable, ALUControlD,   
-	output logic [31:0] SrcAD, SrcBD, ExtImmD
-//   output logic BranchD   implement this when decoder is changed to output BranchD
+	output logic [31:0] SrcAD, ShiftSource, ExtImmD, Rs
 	);
 
 	logic [3:0] RA1, RA2;
@@ -20,7 +18,6 @@ module IDecode(
 	decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
 			FlagWriteD, PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD,
 			ImmSrcD, RegSrcD, ALUControlD, byteEnable, branch_link);
-// decoder neeeds to be changed, needs to output branch
 
 // register file logic 
 	mux2 #(4) ra1mux(InstrD[19:16], 4'b1111, RegSrcD[0], RA1); 
