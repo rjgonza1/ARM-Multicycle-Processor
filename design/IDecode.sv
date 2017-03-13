@@ -1,5 +1,5 @@
 module IDecode(
-     input logic clk,
+     input logic clk, reset,
      input logic [31:0] InstrF, PCPlus8, ResultW,
      input logic RegWriteW, 
      output logic [1:0] FlagWriteD, 
@@ -14,21 +14,21 @@ module IDecode(
     logic branch_link;
 
 // flop
-   //still have to implment flop
+    floprr #(32) IDReg(clk, reset, InstrF, InstD);
 
 // decoder
-    decoder dec(InstrF[27:26], InstrF[25:20], InstrF[15:12], InstrF[11:0],
+    decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
 			FlagWriteD, PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD,
 			ImmSrcD, RegSrcD, ALUControlD, byteEnable, branch_link
 			);
 // decoder neeeds to be changed, needs to output branch
 
 // register file logic 
-	mux2 #(4) ra1mux(InstrF[19:16], 4'b1111, RegSrcD[0], RA1); 
-	mux2 #(4) ra2mux(InstrF[3:0], InstrF[15:12], RegSrcD[1], RA2); 
+	mux2 #(4) ra1mux(InstrD[19:16], 4'b1111, RegSrcD[0], RA1); 
+	mux2 #(4) ra2mux(InstrD[3:0], InstrD[15:12], RegSrcD[1], RA2); 
 
-	regfile rf(clk, RegWriteW, RA1, RA2, InstrF[11:8], InstrF[15:12], ResultW, PCPlus8, SrcAD, ShiftSource, Rs, branch_link);
+	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], InstrD[15:12], ResultW, PCPlus8, SrcAD, ShiftSource, Rs, branch_link);
 
 // extender     
-	extend ext(InstrF[23:0], ImmSrcD, ExtImmD);
+	extend ext(InstrD[23:0], ImmSrcD, ExtImmD);
 
