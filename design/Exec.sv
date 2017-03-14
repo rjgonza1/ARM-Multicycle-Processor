@@ -1,12 +1,18 @@
 module Exec(
-	input logic PCSrcD,
-	input logic RegWriteD,
-	input logic MemtoRegD,
-	input logic MemWriteD,
-	input logic ALUControlD,
-	input logic ALUSrcD,
-	input logic FlagWriteD,
-	input logic ImmSrcD);
+	input logic clk, reset, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
+     input logic [1:0] FlagWriteD,
+	input logic [3:0] ALUControlD, CondD, RdD,
+     output logic PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
+     output logic [3:0] RdE,
+     output logic [31:0] ALUResultE, WriteDataE
+	);
 
-	flopr EReg #(/*TODO find out actual size of this flop*/);
+     logic ALUSrcE;
+     logic [1:0] FlagWriteE;
+     logic [3:0] ALUControlE, CondE, FlagsE, Flags;
+
+     pipereg EReg(clk, reset, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, FlagWriteD,
+                 ALUControlD, Flags, CondD, RdD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
+                 ALUSrcE, FlagWriteE, ALUControlE, CondE, FlagsE, RdE
+                 );
 endmodule

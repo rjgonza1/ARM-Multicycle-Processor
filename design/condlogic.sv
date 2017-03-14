@@ -1,14 +1,13 @@
 module condlogic(input logic clk, reset,
 		input logic [3:0] Cond,
 		input logic [3:0] ALUFlags,
-		output logic [3:0] StatusRegister,
+		output logic [3:0] StatusRegister, Flags, //made Flags an output
 		input logic [1:0] FlagW,
 		input logic PCS, RegW, MemW,
 		output logic PCSrc, RegWrite, MemWrite
 		);
 
 	logic [1:0] FlagWrite;
-	logic [3:0] Flags;
 	logic CondEx;
 
 	flopenr #(2) flagreg1(	clk, reset, FlagWrite[1], 

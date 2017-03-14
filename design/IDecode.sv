@@ -3,7 +3,7 @@ module IDecode(
 	input logic [31:0] InstrF, PCPlus8, ResultW,
      output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
-	output logic [3:0] byteEnable, ALUControlD,   
+	output logic [3:0] byteEnable, ALUControlD, RdD,   
 	output logic [31:0] SrcAD, ShiftSource, ExtImmD, Rs
 	);
 
@@ -28,4 +28,7 @@ module IDecode(
 
 // extender     
 	extend ext(InstrD[23:0], ImmSrcD, ExtImmD);
+
+// pass Rd through the pipeline stages
+     RdD <= InstrD[15:12];
 endmodule
