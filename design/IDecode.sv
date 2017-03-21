@@ -1,10 +1,10 @@
 module IDecode(
-	input logic clk, reset, RegWriteW,
+	input logic clk, reset, RegWriteW, stall,
 	input logic [31:0] InstrF, PCPlus8, ResultW,
      output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
-	output logic [3:0] byteEnable, ALUControlD, RdD,   
-	output logic [31:0] SrcAD, ShiftSource, ExtImmD, Rs
+	output logic [3:0] byteEnable, ALUControlD, RdD, CondD,   
+	output logic [31:0] SrcAD, ShiftSourceD, ExtImmD, Rs
 	);
 
 	logic [3:0] RA1, RA2;
@@ -12,7 +12,7 @@ module IDecode(
 	logic branch_link;
 
 // flop
-	flopr #(32) IDReg(clk, reset, InstrF, InstD);
+	flopr #(32) IDReg((clk & ~stall), reset, InstrF, InstD);
 
 // decoder
 	decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
@@ -24,11 +24,12 @@ module IDecode(
 	mux2 #(4) ra2mux(InstrD[3:0], InstrD[15:12], RegSrcD[1], RA2); 
 
 	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], InstrD[15:12], ResultW, 
-			PCPlus8, SrcAD, ShiftSource, Rs, branch_link);
+			PCPlus8, SrcAD, ShiftSourceD, Rs, branch_link);
 
 // extender     
 	extend ext(InstrD[23:0], ImmSrcD, ExtImmD);
 
 // pass Rd through the pipeline stages
      RdD <= InstrD[15:12];
+     CondD <= InstrD[31:28];
 endmodule
