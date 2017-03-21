@@ -20,10 +20,10 @@ module pipereg(
             ALUControlE <= 4'b0000;
             CondE <= 4'b0000;
             FlagsE <= 4'b0000;
-	    RdE <= 4'b0000;
-	    SrcAE <= 32'b0;
-	    ShiftSourceE <= 32'b0;
-	    ExtImmE <= 32'b0;
+	       RdE <= 4'b0000;
+	       SrcAE <= 32'b0;
+	       ShiftSourceE <= 32'b0;
+	       ExtImmE <= 32'b0;
         else
             PCSrceE <= PCSrcD;
             RegWriteE <= RegWriteD;
@@ -34,8 +34,8 @@ module pipereg(
             ALUControlE <= ALUControlD;
             CondE <= CondD;
             FlagsE <= FlagsD;
-	    RdE <= RdD;
-	    SrcAE <= SrcAD;
-	    ShiftSourceE <= ShiftSourceD;
-	    ExtImmE <= ExtImmD;
+	       RdE <= RdD;
+	       SrcAE <= SrcAD;
+	       ShiftSourceE <= ShiftSourceD;
+	       ExtImmE <= ExtImmD;
 endmodule
