@@ -22,7 +22,7 @@ module Exec(
 	input logic IsRegister, Carry,
 	input logic [31:0] RsShiftD, // remember to parse this to 8 bits
 	
-	output logic PCSrcM,
+	output logic PCSrcM, Branch, // send branch bit out of Exec stage
 	output logic RegWriteM,
 	output logic MemtoRegM,
 	output logic MemWriteM,
@@ -40,7 +40,6 @@ module Exec(
 
 		logic [31:0] OpA, OpB, nonImmOpB;
 		logic [3:0] ALUFlags;
-		logic carryIn;
 		// signal for shifter output
 		logic ShiftOut;
 		logic ShiftCarry;
@@ -49,7 +48,7 @@ module Exec(
 	
 		MemtoRegM <= MemtoRegE;
 		WriteAddrM <= WriteAddrE;
-		WriteDataM <= nonImmOpB;
+		WriteDataM <= ShiftOut; 	// shiftOut is the shifter output
 
 	// declaring other modules
 		// I did not include Flags in Exec.sv because the flags
@@ -65,7 +64,7 @@ module Exec(
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
 		// OUTPUT PCSrc, RegWrite, MemWrite
 		condlogic cond (clk, reset, condE, ALUFlags, FlagWriteE, PCSrcE, RegWriteE, MemWriteE, BranchE,
-				PCSrcM, RegWriteM, MemWriteM); 
+				PCSrcM, RegWriteM, MemWriteM, Branch); 
 		
 		// INPUT [31:0] Rm, [7:0] RsShift, Immediate, [1:0] Sh, [4:0] Shamt, IsRegister, Carry
 		// OUTPUT [31:0] Result, ShiftCarry,
@@ -78,6 +77,6 @@ module Exec(
 		mux3 m2(Rd2E, ResultW, ALUResultM, forwardBE, nonImmOpB);
 		mux2 m3(ShiftOut, ExtE, ALUSrcE, OpB);
 
-		alu a(OpA, OpB, ALUControlE, ALUResultE, ALUFlags, carryIn);
+		alu a(OpA, OpB, ALUControlE, ALUResultE, ALUFlags, shiftCarry);
 
 endmodule

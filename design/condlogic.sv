@@ -5,7 +5,7 @@ module condlogic(input logic clk, reset,
 		//output logic [3:0]  Flags, // removed StatusRegister (add here if we actually need) -Julian
 		input logic [1:0] FlagW,
 		input logic PCS, RegW, MemW, Branch,
-		output logic PCSrc, RegWrite, MemWrite
+		output logic PCSrc, RegWrite, MemWrite, BranchOut // branch
 		);
 
 	logic [1:0] FlagWrite;
@@ -24,7 +24,8 @@ module condlogic(input logic clk, reset,
 	assign FlagWrite = FlagW & {2{CondEx}};
 	assign RegWrite = RegW & CondEx;
 	assign MemWrite = MemW & CondEx;
-	assign PCSrc = (PCS | Branch) & CondEx; // changed this expression to include Branch -Julian
+	assign PCSrc = PCS & CondEx;
+	assign BranchOut = Branch & CondEx;
 
 endmodule
 
