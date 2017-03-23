@@ -35,12 +35,12 @@ module HazardUnit (
 //////////////////////////////forwarding
 
 //////////////////////////////stalling
-	ldrStallD = ((ra1D == wa3E) | (ra2D == wa3E)) && MemtoRegE;
-	PCWrPendingF = PCSrcD | PCSrcE | PCSrcM;
+	ldrStallD = ((ra1D == wa3E) || (ra2D == wa3E)) && MemtoRegE;
+	PCWrPendingF = PCSrcD || PCSrcE || PCSrcM;
 	
-	StallF = ldrStallD | PCWrPendingF;
-	FlushD = PCWrPendingF | PCSrcWB | BranchTakenE;
-	FlushE = ldrStallD | BranchTakenE;
+	StallF = ldrStallD || PCWrPendingF;
+	FlushD = PCWrPendingF || PCSrcWB || BranchTakenE;
+	FlushE = ldrStallD || BranchTakenE;
 	StallD = ldrStallD; 
 //////////////////////////////stalling
 endmodule
