@@ -1,15 +1,17 @@
 module condlogic(input logic clk, reset,
 		input logic [3:0] Cond,
 		input logic [3:0] ALUFlags,
-		output logic [3:0] StatusRegister,
+		//input logic [3:0] PrevFlags, // added PrevFlags, Flags output loops back through pipereg back to here
+		//output logic [3:0]  Flags, // removed StatusRegister (add here if we actually need) -Julian
 		input logic [1:0] FlagW,
-		input logic PCS, RegW, MemW,
-		output logic PCSrc, RegWrite, MemWrite
+		input logic PCS, RegW, MemW, Branch,
+		output logic PCSrc, RegWrite, MemWrite, BranchOut // branch
 		);
 
 	logic [1:0] FlagWrite;
-	logic [3:0] Flags;
 	logic CondEx;
+ 	// used to store ALUFlags until the next clock cycle so the next pipeline instruction can use them
+	logic [3:0] Flags;
 
 	flopenr #(2) flagreg1(	clk, reset, FlagWrite[1], 
 				ALUFlags[3:2], Flags[3:2]);
@@ -23,6 +25,7 @@ module condlogic(input logic clk, reset,
 	assign RegWrite = RegW & CondEx;
 	assign MemWrite = MemW & CondEx;
 	assign PCSrc = PCS & CondEx;
+	assign BranchOut = Branch & CondEx;
 
 endmodule
 
