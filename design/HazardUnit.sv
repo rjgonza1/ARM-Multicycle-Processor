@@ -40,7 +40,7 @@ module HazardUnit (
 	
 	StallF = ldrStallD | PCWrPendingF;
 	FlushD = PCWrPendingF | PCSrcWB | BranchTakenE;
-	FlushE = ldrStallD + BranchTakenE;
+	FlushE = ldrStallD | BranchTakenE;
 	StallD = ldrStallD; 
 //////////////////////////////stalling
 endmodule
