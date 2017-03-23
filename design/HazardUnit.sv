@@ -9,10 +9,14 @@ module HazardUnit (
 //////////////////////////////stalling
 	input logic MemtoRegE,
 	input logic [3:0] ra1D, ra2D, wa3E,
-	output logic big_stall_and_flush);
+	input logic PCSrcD, PCSrcE, PCSrcE, PCSrcM, PCSrcWB,
+	input logic BranchTakenE,
+	output logic StallF, StallD,
+	output logic FlushD, FlushE);
 //////////////////////////////stalling
 
-
+	logic ldrStallD;
+	logic PCWrPendingF;
 
 //////////////////////////////forwarding
 	if (RegWriteM && (ra1E == wa3M))
@@ -31,6 +35,12 @@ module HazardUnit (
 //////////////////////////////forwarding
 
 //////////////////////////////stalling
-	big_stall_and_flush = ((ra1D == wa3E) | (ra2D == wa3E)) && MemtoRegE;
+	ldrStallD = ((ra1D == wa3E) | (ra2D == wa3E)) && MemtoRegE;
+	PCWrPendingF = PCSrcD | PCSrcE | PCSrcM;
+	
+	StallF = ldrStallD | PCWrPendingF;
+	FlushD = PCWrPendingF | PCSrcWB | BranchTakenE;
+	FlushE = ldrStallD + BranchTakenE;
+	StallD = ldrStallD; 
 //////////////////////////////stalling
 endmodule
