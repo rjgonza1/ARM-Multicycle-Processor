@@ -76,6 +76,6 @@ module Exec(
 		mux3 m2(Rd2E, ResultW, ALUResultM, forwardBE, nonImmOpB);
 		mux2 m3(ShiftOut, ExtE, ALUSrcE, OpB);
 
-		alu a(OpA, OpB, ALUControlE, ALUResultE, ALUFlags, shiftCarry);
+	alu a(OpA, OpB, ALUControlE, ALUResultE, ALUFlags, shiftCarry);
 
 endmodule
