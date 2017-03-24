@@ -14,7 +14,7 @@ module IDecode(
 	flopr #(32) IDReg((clk & ~stall), reset, InstrF, InstD);
 
 // decoder
-	decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
+	decoder dec(InstrF[27:26], InstrF[25:20], InstrF[15:12], InstrF[11:0],
 			FlagWriteD, PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD,
 			ImmSrcD, RegSrcD, ALUControlD, byteEnable, branch_link);
 
