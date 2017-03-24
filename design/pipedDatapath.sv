@@ -13,7 +13,7 @@ module pipedDatapath(
 		FlushD, FlushE;
 	logic [1:0] FlagWriteD, forwardAE, forwardBE;
 	logic [3:0] RA1, RA2, byteEnable, ALUControlD, RdD, CondD,
-				RdE,
+		    RA1E, RA2E, RdE,
 				RdM,
 				RdW;
 	logic [31:0] PC, PCIntermediate,PCPlus4F, InstrF, ResultW, SrcAD, ShiftSourceD, ExtImmD, Rs,
@@ -33,9 +33,9 @@ module pipedDatapath(
     
 	// Execute
 	Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
-		  CondD, RdD, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
+		  CondD, RdD, RA1, RA2, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
 		  Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE,
-		  MemtoRegE, MemWriteE, RdE, ALUResultE, WriteDataE); //WORK HERE
+		  MemtoRegE, MemWriteE, RdE, RA1E, RA2E, ALUResultE, WriteDataE); //WORK HERE
 
 	// Memory
 	memPipereg memReg((clk && ~stall), reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE,
