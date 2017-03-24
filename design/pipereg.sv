@@ -1,10 +1,12 @@
 module pipereg(
     input logic clk, reset, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
     input logic [1:0] FlagWriteD,
-    input logic [3:0] ALUControlD, CondD, RdD, RA1, RA2, Rd1D, Rd2D, RsShiftD, ExtD, // removed Flags from here
+    input logic [3:0] ALUControlD, CondD, RdD, RA1, RA2, 
+    input logic [31:0] Rd1D, Rd2D, RsShiftD, ExtD, // removed Flags from here
     output logic PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE,
     output logic [1:0] FlagWriteE,
-    output logic [3:0] ALUControlE, CondE, RdE, RA1E, RA2E, Rd1E, Rd2E, RsShiftE, ExtE // removed FlagsE from here
+    output logic [3:0] ALUControlE, CondE, RdE, RA1E, RA2E, 
+    output logic [31:0] Rd1E, Rd2E, RsShiftE, ExtE // removed FlagsE from here
     );
 
     always_ff @(posedge clk, posedge reset)
@@ -22,10 +24,10 @@ module pipereg(
             RdE <= 4'b0000;
             RA1E <= 4'b0000;
             RA2E <= 4'b0000;
-            Rd1E <= 4'b0000;
-            Rd2E <= 4'b0000;
-            RsShiftE <= 4'b0000;
-            ExtE <= 4'b0000;
+            Rd1E <= 32'b0000;
+            Rd2E <= 32'b0000;
+            RsShiftE <= 32'b0000;
+            ExtE <= 32'b0000;
             end
         else
             begin
