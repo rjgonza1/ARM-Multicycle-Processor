@@ -6,7 +6,7 @@ module pipedDatapath(
 	output logic [31:0] PCF, ALUResultM, WriteDataM
 	);
     
-	logic RegWriteW, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, BranchD,
+	logic RegWriteD, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, BranchD,
 		PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
 		PCSrcM, RegWriteM, MemtoRegM,
 		PCSrcW, RegWriteW, MemtoRegW, BranchTakenE,
