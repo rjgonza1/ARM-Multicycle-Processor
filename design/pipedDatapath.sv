@@ -8,9 +8,9 @@ module pipedDatapath(
     logic RegWriteW, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, PCSrcD, BranchD,
           PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
           PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
-          PCSrcW, RegWriteW, MemtoRegW, BranchTakenE
-	  StallF, StallD,
-	  FlushD, FlushE;
+          PCSrcW, RegWriteW, MemtoRegW, BranchTakenE,
+		  StallF, StallD,
+		  FlushD, FlushE;
     logic [1:0] FlagWriteD, forwardAE, forwardBE;
     logic [3:0] byteEnable, ALUControlD, RdD, CondD,
                 RdE,
@@ -33,17 +33,17 @@ module pipedDatapath(
     
     // Execute
     Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
-              CondD, RdD, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25], 
-	      Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE, 
-	      MemtoRegE, MemWriteE, RdE, ALUResultE, WriteDataE); //WORK HERE
+              CondD, RdD, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
+			  Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE,
+			  MemtoRegE, MemWriteE, RdE, ALUResultE, WriteDataE); //WORK HERE
 
     // Memory
-    memPipereg memReg((clk % ~stall), reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE, 
-               ALUResultE, WriteDataE, PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
-               RdM, ALUResultM, WriteDataM);
+	memPipereg memReg((clk && ~stall), reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE,
+					  ALUResultE, WriteDataE, PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
+					  RdM, ALUResultM, WriteDataM);
 
     // Write Back
-    wbPipereg wbReg((clk & ~stall), reset, PCSrcM, RegWriteM, MemtoRegM, RdM,
+	wbPipereg wbReg((clk && ~stall), reset, PCSrcM, RegWriteM, MemtoRegM, RdM,
                    ALUResultM, ReadDataM, PCSrcW, RegWriteW, MemtoRegW, RdW,
                    ALUResultW, ReadDataW);
 
