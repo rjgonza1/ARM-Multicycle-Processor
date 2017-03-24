@@ -24,6 +24,7 @@ module Exec(
 	output logic RegWriteE,
 	output logic MemtoRegE,
 	output logic MemWriteE,
+	output logic BranchTakenE,
 	output logic [3:0] RdE, RA1E, RA2E,
 	output logic [31:0] ALUResultE,
 	output logic [31:0] WriteDataE,
@@ -59,7 +60,8 @@ module Exec(
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
 		// OUTPUT PCSrc, RegWrite, MemWrite
-	condlogic cond (clk, reset, condE, ALUFlags, StatusRegister, Flags, FlagWriteE, RegWriteE, MemWriteE, PCSrcE); 
+	condlogic cond (clk, reset, condE, ALUFlags, StatusRegister, Flags, FlagWriteE, RegWriteE, MemWriteE, BranchD, PCSrcE,
+		       RegWriteE, MemWriteE, BranchTakenE); 
 		
 		// INPUT [31:0] Rm, [7:0] RsShift, Immediate, [1:0] Sh, [4:0] Shamt, IsRegister, Carry
 		// OUTPUT [31:0] Result, ShiftCarry,
