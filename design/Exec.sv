@@ -40,7 +40,7 @@ module Exec(
 		logic [3:0] ALUFlags;
 		// signal for shifter output
 		logic [31:0] ShiftOut;
-		logic ShiftCarry, PCS;
+		logic ShiftCarry, PCS, RegWE, MemWE;
 
 	// Assignments and logic
 	
@@ -54,13 +54,13 @@ module Exec(
 		//Thanks Julian -Noah
 	pipereg eReg (clk, flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
 				FlagWriteD, ALUControlD, CondD, RdD, RA1, RA2, Rd1D, Rd2D, Rs, ExtD,
-				PCS, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, RA1E, RA2E,
+				PCS, RegWE, MemtoRegE, MemWE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, RA1E, RA2E,
 				Rd1E, Rd2E, RsE, ExtE);
 		
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
 		// OUTPUT PCSrc, RegWrite, MemWrite
-	condlogic cond (clk, reset, CondE, ALUFlags, StatusRegister, Flags, FlagWriteE, PCS RegWriteE, MemWriteE, BranchD, PCSrcE,
+	condlogic cond (clk, reset, CondE, ALUFlags, StatusRegister, Flags, FlagWriteE, PCS, RegWE, MemWE, BranchD, PCSrcE,
 		       RegWriteE, MemWriteE, BranchTakenE); 
 		
 		// INPUT [31:0] Rm, [7:0] RsShift, Immediate, [1:0] Sh, [4:0] Shamt, IsRegister, Carry
