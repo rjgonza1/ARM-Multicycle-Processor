@@ -9,7 +9,7 @@ module HazardUnit (
 //////////////////////////////stalling
 	input logic MemtoRegE,
 	input logic [3:0] ra1D, ra2D, wa3E,
-	input logic PCSrcD, PCSrcE, PCSrcE, PCSrcM, PCSrcWB,
+	input logic PCSrcD, PCSrcE, PCSrcM, PCSrcWB,
 	input logic BranchTakenE,
 	output logic StallF, StallD,
 	output logic FlushD, FlushE);
