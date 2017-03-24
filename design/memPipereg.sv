@@ -27,7 +27,7 @@ module memPipereg(
             MemWriteM <= MemWriteE;
             RdM <= RdE;
             ALUResultM <= ALUResultE;
-            WriteDataM <= WriteDateE;
+            WriteDataM <= WriteDataE;
             end
     end
 endmodule
