@@ -1,5 +1,5 @@
 module Exec(
-	input logic clk, flush
+	input logic clk, flush,
 	input logic PCSrcD,
 	input logic RegWriteD,
 	input logic MemtoRegD,
