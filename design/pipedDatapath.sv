@@ -28,7 +28,7 @@ module pipedDatapath(
 	IFetch ifetch(clk, reset, StallF, PC, PCF, PCPlus4F);
 	
 	// Instruction Decode
-	IDecode idecode(clk, (reset || FlushD), RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
+	IDecode idecode(clk, (reset || FlushD), RdW, RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
 			MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
 			RdD, CondD, RA1, RA2, SrcAD, ShiftSourceD, ExtImmD, Rs);
     
