@@ -1,7 +1,7 @@
 module pipedDatapath(
 	input logic clk, reset,
 	output logic [3:0] byteEnable,
-	input logic [31:0] Instruction, ReadDataM,
+	input logic [31:0] InstrF, ReadDataM,
 	output logic MemWriteM,
 	output logic [31:0] PCF, ALUResultM, WriteDataM
 	);
@@ -17,7 +17,7 @@ module pipedDatapath(
 		    RA1E, RA2E, RdE,
 				RdM,
 				RdW;
-	logic [31:0] PC, PCIntermediate,PCPlus4F, InstrF, ResultW, SrcAD, ShiftSourceD, ExtImmD, Rs,
+	logic [31:0] PC, PCIntermediate,PCPlus4F, ResultW, SrcAD, ShiftSourceD, ExtImmD, Rs,
 		ALUResultE, WriteDataE,
 		ALUResultW, ReadDataW;
 	
