@@ -53,8 +53,8 @@ module Exec(
 		// include flags into this pipereg below. -Julian
 		//Thanks Julian -Noah
 	pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
-				FlagWriteD, ALUControlD, CondD, RdD, Rd1D, Rd2D, Rs, ExtD,
-				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, 
+				FlagWriteD, ALUControlD, CondD, RdD, RA1, RA2, Rd1D, Rd2D, Rs, ExtD,
+				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, RA1E, RA2E,
 				Rd1E, Rd2E, RsE, ExtE);
 		
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
