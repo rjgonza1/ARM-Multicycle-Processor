@@ -51,7 +51,8 @@ module pipedDatapath(
 	mux2 #(32) wbmux(ReadDataW, ALUResultW, MemtoRegW, ResultW);
 	
 	// Hazard Detection Unit
-	HazardUnit hUnit(clk, RegWriteM, RegWriteW, )
+	HazardUnit hUnit(RegWriteM, RegWriteW, , RdM, RdW, forwardAE, forwardBE, MemtoRegE, RA1E, RA2E, RdE, PCSrcD, PCSrcE, PCSrcM,
+			 PCSrcW, BranchTakenE, StallF, StallD, FlushD, FlushE);
 	
 
 endmodule
