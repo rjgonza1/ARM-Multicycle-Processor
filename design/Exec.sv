@@ -56,7 +56,7 @@ module Exec(
 		// If this is not correct, add flags as an input port and
 		// include flags into this pipereg below. -Julian
 		pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
-				FlagWriteD, ALUControlD, /*Flags*/, CondD, Rd1D, Rd2D, RsShiftD, ExtD,
+				FlagWriteD, ALUControlD, CondD, Rd1D, Rd2D, RsShiftD, ExtD,
 				PCSrcE, RegWriteE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, 
 				FlagsE, Rd1E, Rd2E, RsShiftE, ExtE);
 		
