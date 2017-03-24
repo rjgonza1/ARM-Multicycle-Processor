@@ -28,24 +28,24 @@ module pipedDatapath(
 	
 	// Instruction Decode
 	IDecode idecode(clk, FlushD, RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
-					MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
-                    RdD, CondD, SrcAD, ShiftSourceD, ExtImmD, Rs);
+			MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
+			RdD, CondD, SrcAD, ShiftSourceD, ExtImmD, Rs);
     
 	// Execute
 	Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
-              CondD, RdD, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
-			  Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE,
-			  MemtoRegE, MemWriteE, RdE, ALUResultE, WriteDataE); //WORK HERE
+		  CondD, RdD, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
+		  Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE,
+		  MemtoRegE, MemWriteE, RdE, ALUResultE, WriteDataE); //WORK HERE
 
 	// Memory
 	memPipereg memReg((clk && ~stall), reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE,
-					  ALUResultE, WriteDataE, PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
-					  RdM, ALUResultM, WriteDataM);
+			  ALUResultE, WriteDataE, PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
+			  RdM, ALUResultM, WriteDataM);
 
 	// Write Back
 	wbPipereg wbReg((clk && ~stall), reset, PCSrcM, RegWriteM, MemtoRegM, RdM,
-                   ALUResultM, ReadDataM, PCSrcW, RegWriteW, MemtoRegW, RdW,
-                   ALUResultW, ReadDataW);
+			ALUResultM, ReadDataM, PCSrcW, RegWriteW, MemtoRegW, RdW,
+			ALUResultW, ReadDataW);
 
 	// Write Back mux
 	mux2 #(32) wbmux(ReadDataW, ALUResultW, MemtoRegW, ResultW);
