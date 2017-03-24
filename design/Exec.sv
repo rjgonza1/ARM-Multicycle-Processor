@@ -1,5 +1,5 @@
 module Exec(
-	input logic clk, flush,
+	input logic clk, reset, flush,
 	input logic PCSrcD,
 	input logic RegWriteD,
 	input logic MemtoRegD,
@@ -52,7 +52,7 @@ module Exec(
 		// If this is not correct, add flags as an input port and
 		// include flags into this pipereg below. -Julian
 		//Thanks Julian -Noah
-	pipereg eReg (clk, flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
+	pipereg eReg (clk, (reset || flus)h, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
 				FlagWriteD, ALUControlD, CondD, RdD, RA1, RA2, Rd1D, Rd2D, Rs, ExtD,
 				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, RA1E, RA2E,
 				Rd1E, Rd2E, RsE, ExtE);
