@@ -10,22 +10,22 @@ module mux3
 
 		2'b00:
 		begin
-			y = d0;
+			assign y = d0;
 		end
 
 		2'b01:
 		begin
-			y = d1;
+			assign y = d1;
 		end
 
 		2'b10:
 		begin
-			y = d2;
+			assign y = d2;
 		end
 
 		default:
 		begin
-			y = WIDTH'bx;
+			assign y = WIDTH'bx;
 		end
 	endcase
 
