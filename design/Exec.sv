@@ -72,9 +72,9 @@ module Exec(
 				ShiftOut, ShiftCarry, ALUControlE);
 		
 		// mux
-		mux3 m1(Rd1E, ResultW, ALUResultM, forwardAE, OpA);
-		mux3 m2(Rd2E, ResultW, ALUResultM, forwardBE, nonImmOpB);
-		mux2 m3(ShiftOut, ExtE, ALUSrcE, OpB);
+		mux3 #(32) m1(Rd1E, ResultW, ALUResultM, forwardAE, OpA);
+		mux3 #(32) m2(Rd2E, ResultW, ALUResultM, forwardBE, nonImmOpB);
+		mux2 #(32) m3(ShiftOut, ExtE, ALUSrcE, OpB);
 
 	alu a(OpA, OpB, ALUControlE, ALUResultE, ALUFlags, shiftCarry);
 
