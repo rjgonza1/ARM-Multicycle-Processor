@@ -1,5 +1,5 @@
 module IDecode(
-	input logic clk, reset, RegWriteW, stall,
+	input logic clk, reset, RegWriteW, stall, RdW
 	input logic [31:0] InstrF, PCPlus8, ResultW,
      	output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
