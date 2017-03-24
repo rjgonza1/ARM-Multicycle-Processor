@@ -12,7 +12,7 @@ module pipedDatapath(
 		StallF, StallD,
 		FlushD, FlushE;
 	logic [1:0] FlagWriteD, forwardAE, forwardBE;
-	logic [3:0] RA1D, RA2D, byteEnable, ALUControlD, RdD, CondD,
+	logic [3:0] RA1, RA2, byteEnable, ALUControlD, RdD, CondD,
 				RdE,
 				RdM,
 				RdW;
@@ -29,7 +29,7 @@ module pipedDatapath(
 	// Instruction Decode
 	IDecode idecode(clk, FlushD, RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
 			MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
-			RdD, CondD, RA1D, RA2D, SrcAD, ShiftSourceD, ExtImmD, Rs);
+			RdD, CondD, RA1, RA2, SrcAD, ShiftSourceD, ExtImmD, Rs);
     
 	// Execute
 	Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
