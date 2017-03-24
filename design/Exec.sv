@@ -20,7 +20,7 @@ module Exec(
 	input logic [4:0] Shamt,
 	input logic IsRegister,
 	
-	output logic PCSrcM, Branch, // send branch bit out of Exec stage
+	output logic PCSrcM, // send branch bit out of Exec stage
 	output logic RegWriteM,
 	output logic MemtoRegM,
 	output logic MemWriteM,
