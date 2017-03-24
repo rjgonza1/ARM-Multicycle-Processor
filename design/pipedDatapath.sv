@@ -34,8 +34,8 @@ module pipedDatapath(
     
 	// Execute
 	Exec exec(clk, (reset || FlushE), PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
-		  CondD, RdD, RA1, RA2, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, Instruction[25],
-		  Instruction[6:5], Instruction[11:7], Instruction[4], PCSrcE, RegWriteE,
+		  CondD, RdD, RA1, RA2, SrcAD, ShiftSourceD, ExtImmD, forwardAE, forwardBE, ResultW, ALUResultM, Rs, InstrF[25],
+		  InstrF[6:5], InstrF[11:7], InstrF[4], PCSrcE, RegWriteE,
 		  MemtoRegE, MemWriteE, BranchTakenE, RdE, RA1E, RA2E, ALUResultE, WriteDataE);
 
 	// Memory
