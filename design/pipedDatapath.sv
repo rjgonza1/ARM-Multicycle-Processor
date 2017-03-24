@@ -19,7 +19,7 @@ module pipedDatapath(
 				RdW;
 	logic [31:0] PC, PCIntermediate,PCPlus4F, InstrF, ResultW, SrcAD, ShiftSourceD, ExtImmD, Rs,
 		ALUResultE, WriteDataE,
-		ALUResutlW, ReadDataW;
+		ALUResultW, ReadDataW;
 	
 	// Instruction Fetch
 	mux2 #(32) pcmuxintermediate(PCPlus4F, ResultW, PCSrcW, PCIntermediate); //adding fetchmux1
