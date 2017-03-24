@@ -5,28 +5,29 @@ module mux3
 		input logic [1:0] s,
 		output logic [WIDTH-1 : 0] y
 	);
-
+	always_comb
+	begin
 	case(s)
 
 		2'b00:
 		begin
-			assign y = d0;
+			y = d0;
 		end
 
 		2'b01:
 		begin
-			assign y = d1;
+			y = d1;
 		end
 
 		2'b10:
 		begin
-			assign y = d2;
+			y = d2;
 		end
 
 		default:
 		begin
-			assign y = 32'bx;
+			y = 32'bx;
 		end
 	endcase
-
+	end
 endmodule
