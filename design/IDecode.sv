@@ -1,5 +1,5 @@
 module IDecode(
-	input logic clk, reset, RegWriteW, stall, RdW
+	input logic clk, reset, RdW, RegWriteW, stall,
 	input logic [31:0] InstrF, PCPlus8, ResultW,
      	output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
@@ -23,7 +23,7 @@ module IDecode(
 	mux2 #(4) ra1mux(InstrD[19:16], 4'b1111, RegSrcD[0], RA1); 
 	mux2 #(4) ra2mux(InstrD[3:0], InstrD[15:12], RegSrcD[1], RA2); 
 
-	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], InstrD[15:12], ResultW, 
+	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], RdW, ResultW, 
 			PCPlus8, SrcAD, ShiftSourceD, Rs, branch_link);
 
 // extender     
