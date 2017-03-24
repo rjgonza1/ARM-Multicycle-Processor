@@ -24,6 +24,6 @@ module arm(	input logic clk, reset,
 // 			MemtoReg, PCSrc, ALUFlags, StatusRegister, PC, Instr, ALUResult,
 // 			WriteData, ReadData, branch_link);
 
-	pipeDatapath dp(clk, reset, MemWrite, byteEnable, Instr, ReadData, PC, ALUResult, WriteData);
+	pipedDatapath dp(clk, reset, MemWrite, byteEnable, Instr, ReadData, PC, ALUResult, WriteData);
 	
 endmodule
