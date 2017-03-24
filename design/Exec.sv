@@ -8,7 +8,6 @@ module Exec(
 	input logic BranchD,
 	input logic ALUSrcD,
 	input logic [1:0] FlagWriteD,
-	input logic ImmSrcD,
 	input logic [3:0] CondD,
 	input logic [3:0] WriteAddrD,
 	input logic [31:0] Rd1D, Rd2D, ExtD,
