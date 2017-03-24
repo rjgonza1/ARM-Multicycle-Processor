@@ -39,12 +39,12 @@ module pipedDatapath(
 		  MemtoRegE, MemWriteE, BranchTakenE, RdE, RA1E, RA2E, ALUResultE, WriteDataE); //WORK HERE
 
 	// Memory
-	memPipereg memReg((clk && ~stall), reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE,
+	memPipereg memReg(clk, reset, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, RdE,
 			  ALUResultE, WriteDataE, PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
 			  RdM, ALUResultM, WriteDataM);
 
 	// Write Back
-	wbPipereg wbReg((clk && ~stall), reset, PCSrcM, RegWriteM, MemtoRegM, RdM,
+	wbPipereg wbReg(clk, reset, PCSrcM, RegWriteM, MemtoRegM, RdM,
 			ALUResultM, ReadDataM, PCSrcW, RegWriteW, MemtoRegW, RdW,
 			ALUResultW, ReadDataW);
 
