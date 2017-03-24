@@ -8,7 +8,9 @@ module pipereg(
     );
 
     always_ff @(posedge clk, posedge reset)
+    begin
          if (reset)
+            begin
             PCSrcE <= 0;
             RegWriteE <= 0;
             MemtoRegE <= 0;
@@ -24,8 +26,10 @@ module pipereg(
             Rd2E <= 4'b0000;
             RsShiftE <= 4'b0000;
             ExtE <= 4'b0000;
+            end
         else
-            PCSrceE <= PCSrcD;
+            begin
+            PCSrcE <= PCSrcD;
             RegWriteE <= RegWriteD;
             MemtoRegE <= MemtoRegD;
             MemWriteE <= MemWriteD;
@@ -40,4 +44,6 @@ module pipereg(
             Rd2E <= Rd2D;
             RsShiftE <= RsShiftD;
             ExtE <= ExtD;
+            end
+    end
 endmodule
