@@ -13,8 +13,7 @@ module Exec(
 	input logic [3:0] WriteAddrD,
 	input logic [31:0] Rd1D, Rd2D, ExtD,
 	input logic [1:0] forwardAE, forwardBE,
-	input logic [31:0] ALUResultM,
-	input logic [31:0] ResultW,
+	input logic [31:0] ResultW, ALUResultM,
 	// shifter input logic
 	input logic Immediate,
 	input logic [1:0] Sh,
@@ -26,7 +25,7 @@ module Exec(
 	output logic RegWriteM,
 	output logic MemtoRegM,
 	output logic MemWriteM,
-	output logic [31:0] ALUResultM,
+	output logic [31:0] ALUResultE,
 	output logic [31:0] WriteDataM,
 	output logic [3:0] WriteAddrM
 	);
@@ -57,8 +56,8 @@ module Exec(
 		// include flags into this pipereg below. -Julian
 		pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
 				FlagWriteD, ALUControlD, CondD, Rd1D, Rd2D, RsShiftD, ExtD,
-				PCSrcE, RegWriteE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, 
-				FlagsE, Rd1E, Rd2E, RsShiftE, ExtE);
+				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, 
+				Rd1E, Rd2E, RsShiftE, ExtE);
 		
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
