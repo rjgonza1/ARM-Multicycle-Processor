@@ -5,6 +5,6 @@ module IFetch(
 
 	flopr #(32) IFReg((clk && ~stall), reset, PC, PCF);
 
-	adder #(32) IFAdd(PCF, 32'b100, PCPlus4F)
+	adder #(32) IFAdd(PCF, 32'b100, PCPlus4F);
 
 endmodule
