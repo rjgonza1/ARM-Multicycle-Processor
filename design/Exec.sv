@@ -9,7 +9,7 @@ module Exec(
 	input logic ALUSrcD,
 	input logic [1:0] FlagWriteD,
 	input logic [3:0] CondD,
-	input logic [3:0] RdD,
+	input logic [3:0] RdD, RA1, RA2,
 	input logic [31:0] Rd1D, Rd2D, ExtD,
 	input logic [1:0] forwardAE, forwardBE,
 	input logic [31:0] ResultW, ALUResultM,
@@ -24,7 +24,7 @@ module Exec(
 	output logic RegWriteE,
 	output logic MemtoRegE,
 	output logic MemWriteE,
-	output logic [3:0] RdE,
+	output logic [3:0] RdE, RA1E, RA2E,
 	output logic [31:0] ALUResultE,
 	output logic [31:0] WriteDataE,
 	);
