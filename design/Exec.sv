@@ -10,16 +10,15 @@ module Exec(
 	input logic [1:0] FlagWriteD,
 	input logic [3:0] CondD,
 	input logic [3:0] RdD,
-	input logic [3:0] WriteAddrD,
 	input logic [31:0] Rd1D, Rd2D, ExtD,
 	input logic [1:0] forwardAE, forwardBE,
 	input logic [31:0] ResultW, ALUResultM,
+	input logic [31:0] Rs,
 	// shifter input logic
 	input logic Immediate,
 	input logic [1:0] Sh,
 	input logic [4:0] Shamt,
 	input logic IsRegister, Carry,
-	input logic [31:0] RsShiftD, // remember to parse this to 8 bits
 	
 	output logic PCSrcM, Branch, // send branch bit out of Exec stage
 	output logic RegWriteM,
@@ -35,7 +34,7 @@ module Exec(
 			ALUSrcE, FlagWriteE, ImmSrcE, BranchE;
 		logic [1:0] FlagWriteE;
 		logic [3:0] WriteAddrE, CondE, ALUControlE;
-		logic [31:0] Rd1E, Rd2E, ExtE;
+	logic [31:0] Rd1E, Rd2E, ExtE, RsE;
 
 		logic [31:0] OpA, OpB, nonImmOpB;
 		logic [3:0] ALUFlags;
@@ -55,9 +54,9 @@ module Exec(
 		// If this is not correct, add flags as an input port and
 		// include flags into this pipereg below. -Julian
 		pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
-				FlagWriteD, ALUControlD, CondD, Rd1D, Rd2D, RsShiftD, ExtD,
+				FlagWriteD, ALUControlD, CondD, Rd1D, Rd2D, Rs, ExtD,
 				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, 
-				Rd1E, Rd2E, RsShiftE, ExtE);
+				Rd1E, Rd2E, RsE, ExtE);
 		
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
@@ -68,7 +67,7 @@ module Exec(
 		// INPUT [31:0] Rm, [7:0] RsShift, Immediate, [1:0] Sh, [4:0] Shamt, IsRegister, Carry
 		// OUTPUT [31:0] Result, ShiftCarry,
 		// INPUT [3:0] ALUControl
-		shifter shft (nonImmOpB, RsShift, Immediate, Sh, Shamt, IsRegister, Carry, 
+	shifter shft (nonImmOpB, RsE [7:0], Immediate, Sh, Shamt, IsRegister, Carry, 
 				ShiftOut, ShiftCarry, ALUControlE);
 		
 		// mux
