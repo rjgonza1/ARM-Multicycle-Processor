@@ -25,7 +25,7 @@ module mux3
 
 		default:
 		begin
-			assign y = WIDTH'bx;
+			assign y = 32'bx;
 		end
 	endcase
 
