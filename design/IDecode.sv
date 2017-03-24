@@ -20,9 +20,9 @@ module IDecode(
 
 // register file logic 
 	mux2 #(4) ra1mux(RA1D, 4'b1111, RegSrcD[0], RA1); 
-	mux2 #(4) ra2mux(RA2D, InstrD[15:12], RegSrcD[1], RA2); 
+	mux2 #(4) ra2mux(RA2D, InstrF[15:12], RegSrcD[1], RA2); 
 
-	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], InstrD[15:12], ResultW, 
+	regfile rf(clk, RegWriteW, RA1, RA2, InstrF[11:8], InstrF[15:12], ResultW, 
 			PCPlus8, SrcAD, ShiftSourceD, Rs, branch_link);
 
 // extender     
