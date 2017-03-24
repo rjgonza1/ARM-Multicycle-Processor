@@ -9,26 +9,27 @@ module IDecode(
 	
 	logic [1:0] RegSrcD, ImmSrcD;
 	logic branch_link;
+	logic [31:0] InstrD;
 
 // flop
-	flopr #(32) IDReg((clk & ~stall), reset, InstrF, InstD);
+	flopr #(32) IDReg((clk & ~stall), reset, InstrF, InstrD);
 
 // decoder
-	decoder dec(InstrF[27:26], InstrF[25:20], InstrF[15:12], InstrF[11:0],
+	decoder dec(InstrD[27:26], InstrD[25:20], InstrD[15:12], InstrD[11:0],
 			FlagWriteD, PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD,
 			ImmSrcD, RegSrcD, ALUControlD, byteEnable, branch_link);
 
 // register file logic 
 	mux2 #(4) ra1mux(RA1D, 4'b1111, RegSrcD[0], RA1); 
-	mux2 #(4) ra2mux(RA2D, InstrF[15:12], RegSrcD[1], RA2); 
+	mux2 #(4) ra2mux(RA2D, InstrD[15:12], RegSrcD[1], RA2); 
 
-	regfile rf(clk, RegWriteW, RA1, RA2, InstrF[11:8], InstrF[15:12], ResultW, 
+	regfile rf(clk, RegWriteW, RA1, RA2, InstrD[11:8], InstrD[15:12], ResultW, 
 			PCPlus8, SrcAD, ShiftSourceD, Rs, branch_link);
 
 // extender     
-	extend ext(InstrF[23:0], ImmSrcD, ExtImmD);
+	extend ext(InstrD[23:0], ImmSrcD, ExtImmD);
 
 // pass Rd through the pipeline stages
-     assign RdD = InstrF[15:12];
-     assign CondD = InstrF[31:28];
+     assign RdD = InstrD[15:12];
+     assign CondD = InstrD[31:28];
 endmodule
