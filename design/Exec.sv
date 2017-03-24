@@ -44,7 +44,7 @@ module Exec(
 
 	// Assignments and logic
 	
-		WriteDataE <= ShiftOut; 	// shiftOut is the shifter output
+		assign WriteDataE = ShiftOut; 	// shiftOut is the shifter output
 
 	// declaring other modules
 		// I did not include Flags in Exec.sv because the flags
@@ -52,7 +52,7 @@ module Exec(
 		// If this is not correct, add flags as an input port and
 		// include flags into this pipereg below. -Julian
 		//Thanks Julian -Noah
-	pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
+	pipereg eReg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
 				FlagWriteD, ALUControlD, CondD, RdD, RA1, RA2, Rd1D, Rd2D, Rs, ExtD,
 				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, RA1E, RA2E,
 				Rd1E, Rd2E, RsE, ExtE);
