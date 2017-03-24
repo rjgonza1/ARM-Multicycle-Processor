@@ -26,9 +26,9 @@ module IDecode(
 			PCPlus8, SrcAD, ShiftSourceD, Rs, branch_link);
 
 // extender     
-	extend ext(InstrD[23:0], ImmSrcD, ExtImmD);
+	extend ext(InstrF[23:0], ImmSrcD, ExtImmD);
 
 // pass Rd through the pipeline stages
-     RdD <= InstrD[15:12];
-     CondD <= InstrD[31:28];
+     assign RdD = InstrF[15:12];
+     assign CondD = InstrF[31:28];
 endmodule
