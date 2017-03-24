@@ -23,7 +23,7 @@ module pipedDatapath(
 	
 	// Instruction Fetch
 	mux2 #(32) pcmuxintermediate(PCPlus4F, ResultW, PCSrcW, PCIntermediate); //adding fetchmux1
-	mux2 #(32) pcmuxfinal(PCIntermediate, ALUresultE, BranchTakenE, PC); //ading fetchmux2
+	mux2 #(32) pcmuxfinal(PCIntermediate, ALUResultE, BranchTakenE, PC); //ading fetchmux2
 
 	IFetch ifetch(clk, reset, StallF, PC, PCF, PCPlus4F);
 	
