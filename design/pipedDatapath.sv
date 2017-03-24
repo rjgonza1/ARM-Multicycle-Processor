@@ -1,13 +1,14 @@
 module pipedDatapath(
-	input logic clk, reset, MemtoRegM,
+	input logic clk, reset,
 	input logic [3:0] byteEnable,
 	input logic [31:0] Instruction, ReadDataM,
+	output logic MemWriteM,
 	output logic [31:0] PCF, ALUResultM, WriteDataM
 	);
     
-	logic RegWriteW, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, PCSrcD, BranchD,
+	logic RegWriteW, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, BranchD,
 		PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
-		PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
+		PCSrcM, RegWriteM, MemtoRegM,
 		PCSrcW, RegWriteW, MemtoRegW, BranchTakenE,
 		StallF, StallD,
 		FlushD, FlushE;
