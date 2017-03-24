@@ -12,14 +12,14 @@ module pipedDatapath(
 		StallF, StallD,
 		FlushD, FlushE;
 	logic [1:0] FlagWriteD, forwardAE, forwardBE;
-	logic [3:0] byteEnable, ALUControlD, RdD, CondD,
+	logic [3:0] RA1D, RA2D, byteEnable, ALUControlD, RdD, CondD,
 				RdE,
 				RdM,
 				RdW;
 	logic [31:0] PC, PCIntermediate,PCPlus4F, InstrF, ResultW, SrcAD, ShiftSourceD, ExtImmD, Rs,
 		ALUResultE, WriteDataE,
 		ALUResutlW, ReadDataW;
-    
+	
 	// Instruction Fetch
 	mux2 #(32) pcmuxintermediate(PCPlus4F, ResultW, PCSrcW, PCIntermediate); //adding fetchmux1
 	mux2 #(32) pcmuxfinal(PCIntermediate, ALUresultE, BranchTakenE, PC); //ading fetchmux2
@@ -29,7 +29,7 @@ module pipedDatapath(
 	// Instruction Decode
 	IDecode idecode(clk, FlushD, RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
 			MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
-			RdD, CondD, Instruction[19:16], Instruction[3:0], SrcAD, ShiftSourceD, ExtImmD, Rs);
+			RdD, CondD, RA1D, RA2D, SrcAD, ShiftSourceD, ExtImmD, Rs);
     
 	// Execute
 	Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
