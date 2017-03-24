@@ -1,5 +1,4 @@
 module HazardUnit (
-	input logic clk,
 //////////////////////////////forwarding
 	input logic RegWriteM, RegWriteWB,
 	input logic [3:0] ra1E, ra2E, wa3M, wa3WB,
