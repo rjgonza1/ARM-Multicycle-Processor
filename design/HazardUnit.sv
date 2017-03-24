@@ -32,7 +32,7 @@ module HazardUnit (
 	else if (RegWriteM && (ra2E == wa3WB))
 		forwardbE = 2'b01;
 	else
-		forwardbE = 2b00;
+		forwardbE = 2'b00;
 
 //////////////////////////////forwarding
 
