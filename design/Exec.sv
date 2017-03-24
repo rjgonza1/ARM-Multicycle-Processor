@@ -27,7 +27,7 @@ module Exec(
 	output logic BranchTakenE,
 	output logic [3:0] RdE, RA1E, RA2E,
 	output logic [31:0] ALUResultE,
-	output logic [31:0] WriteDataE,
+	output logic [31:0] WriteDataE
 	);
 
 	// internal signal declarations
