@@ -21,7 +21,7 @@ module wbPipereg(
         else
             begin
             PCSrcW <= PCSrcM;
-            RegWriteW <= RegWritMe;
+            RegWriteW <= RegWritM;
             MemtoRegW <= MemtoRegM;
             RdW <= RdM;
             ALUResultW <= ALUResultM;
