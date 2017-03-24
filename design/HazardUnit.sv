@@ -18,6 +18,8 @@ module HazardUnit (
 	logic PCWrPendingF;
 
 //////////////////////////////forwarding
+	always_comb
+	begin
 	if (RegWriteM && (ra1E == wa3M))
 		forwardaE = 2'b10;
 	else if (RegWriteM && (ra1E == wa3WB))
@@ -31,6 +33,7 @@ module HazardUnit (
 		forwardbE = 2'b01;
 	else
 		forwardbE = 2b00;
+
 //////////////////////////////forwarding
 
 //////////////////////////////stalling
@@ -41,5 +44,6 @@ module HazardUnit (
 	FlushD = PCWrPendingF || PCSrcWB || BranchTakenE;
 	FlushE = ldrStallD || BranchTakenE;
 	StallD = ldrStallD; 
+	end
 //////////////////////////////stalling
 endmodule
