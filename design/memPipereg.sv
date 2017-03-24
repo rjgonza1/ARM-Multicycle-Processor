@@ -8,7 +8,9 @@ module memPipereg(
     );
 
     always_ff @(posedge clk, posedge reset)
+    begin
          if (reset)
+            begin
             PCSrcM <= 0;
             RegWriteM <= 0;
             MemtoRegM <= 0;
@@ -16,7 +18,9 @@ module memPipereg(
             RdM <= 4'b0000;
             ALUResultM <= 32'b0;
             WriteDataM <= 32'b0;
+            end
         else
+            begin
             PCSrcM <= PCSrcE;
             RegWriteM <= RegWriteE;
             MemtoRegM <= MemtoRegE;
@@ -24,4 +28,6 @@ module memPipereg(
             RdM <= RdE;
             ALUResultM <= ALUResultE;
             WriteDataM <= WriteDateE;
+            end
+    end
 endmodule
