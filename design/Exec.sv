@@ -31,7 +31,7 @@ module Exec(
 	);
 
 	// internal signal declarations
-	logic ALUSrcE, FlagWriteE, ImmSrcE, BranchE;
+	logic ALUSrcE, ImmSrcE, BranchE;
 	logic [1:0] FlagWriteE;
 	logic [3:0] WriteAddrE, CondE, ALUControlE, StatusRegister, Flags;
 	logic [31:0] Rd1E, Rd2E, ExtE, RsE;
@@ -39,7 +39,7 @@ module Exec(
 		logic [31:0] OpA, OpB, nonImmOpB;
 		logic [3:0] ALUFlags;
 		// signal for shifter output
-		logic ShiftOut;
+		logic [31:0] ShiftOut;
 		logic ShiftCarry;
 
 	// Assignments and logic
