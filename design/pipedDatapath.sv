@@ -29,7 +29,7 @@ module pipedDatapath(
 	// Instruction Decode
 	IDecode idecode(clk, FlushD, RegWriteW, StallD, InstrF, PCPlus4F, ResultW, MemWriteD,
 			MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, FlagWriteD, byteEnable, ALUControlD,
-			RdD, CondD, SrcAD, ShiftSourceD, ExtImmD, Rs);
+			RdD, CondD, Instruction[19:16], Instruction[3:0], SrcAD, ShiftSourceD, ExtImmD, Rs);
     
 	// Execute
 	Exec exec(clk, FlushE, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD,
