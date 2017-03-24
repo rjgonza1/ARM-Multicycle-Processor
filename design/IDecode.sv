@@ -1,14 +1,12 @@
 module IDecode(
 	input logic clk, reset, RegWriteW, stall,
 	input logic [31:0] InstrF, PCPlus8, ResultW,
-     output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
+     	output logic MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD,   
 	output logic [1:0] FlagWriteD, 
-	output logic [3:0] byteEnable, ALUControlD, RdD, CondD, RA1D, RA2D,   
+	output logic [3:0] byteEnable, ALUControlD, RdD, CondD, RA1, RA2,   
 	output logic [31:0] SrcAD, ShiftSourceD, ExtImmD, Rs
 	);
 	
-	logic [31:0] 
-	logic [3:0] RA1, RA2;
 	logic [1:0] RegSrcD, ImmSrcD;
 	logic branch_link;
 
