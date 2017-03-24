@@ -1,19 +1,19 @@
 module pipedDatapath(
 	input logic clk, reset,
-	input logic [3:0] byteEnable,
+	output logic [3:0] byteEnable,
 	input logic [31:0] Instruction, ReadDataM,
 	output logic MemWriteM,
 	output logic [31:0] PCF, ALUResultM, WriteDataM
 	);
     
-	logic RegWriteD, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, RegWriteD, BranchD,
+	logic   RegWriteD, MemWriteD, MemtoRegD, PCSrcD, ALUSrcD, BranchD,
 		PCSrcE, RegWriteE, MemtoRegE, MemWriteE,
 		PCSrcM, RegWriteM, MemtoRegM,
 		PCSrcW, RegWriteW, MemtoRegW, BranchTakenE,
 		StallF, StallD,
 		FlushD, FlushE;
 	logic [1:0] FlagWriteD, forwardAE, forwardBE;
-	logic [3:0] RA1, RA2, byteEnable, ALUControlD, RdD, CondD,
+	logic [3:0] RA1, RA2, ALUControlD, RdD, CondD,
 		    RA1E, RA2E, RdE,
 				RdM,
 				RdW;
