@@ -1,5 +1,5 @@
 module Exec(
-	input logic clk, reset, flush
+	input logic clk, flush
 	input logic PCSrcD,
 	input logic RegWriteD,
 	input logic MemtoRegD,
@@ -20,19 +20,18 @@ module Exec(
 	input logic [4:0] Shamt,
 	input logic IsRegister,
 	
-	output logic PCSrcM, // send branch bit out of Exec stage
-	output logic RegWriteM,
-	output logic MemtoRegM,
-	output logic MemWriteM,
+	output logic PCSrcE, // send branch bit out of Exec stage
+	output logic RegWriteE,
+	output logic MemtoRegE,
+	output logic MemWriteE,
+	output logic [3:0] RdE,
 	output logic [31:0] ALUResultE,
-	output logic [31:0] WriteDataM,
-	output logic [3:0] WriteAddrM
+	output logic [31:0] WriteDataE,
 	);
 
 	// internal signal declarations
-		logic 	PCSrcE, RegWriteE, MemWriteE, MemtoRegE, 
-			ALUSrcE, FlagWriteE, ImmSrcE, BranchE;
-		logic [1:0] FlagWriteE;
+	logic ALUSrcE, FlagWriteE, ImmSrcE, BranchE;
+	logic [1:0] FlagWriteE;
 	logic [3:0] WriteAddrE, CondE, ALUControlE, StatusRegister, Flags;
 	logic [31:0] Rd1E, Rd2E, ExtE, RsE;
 
@@ -44,18 +43,17 @@ module Exec(
 
 	// Assignments and logic
 	
-		MemtoRegM <= MemtoRegE;
-		WriteAddrM <= WriteAddrE;
-		WriteDataM <= ShiftOut; 	// shiftOut is the shifter output
+		WriteDataE <= ShiftOut; 	// shiftOut is the shifter output
 
 	// declaring other modules
 		// I did not include Flags in Exec.sv because the flags
 		// already get delayed by 1 clock cycle in the condlogic.sv.
 		// If this is not correct, add flags as an input port and
 		// include flags into this pipereg below. -Julian
+		//Thanks Julian -Noah
 	pipereg reg ((clk & ~stall), flush, PCSrcD, RegWriteD, MemtoRegD, MemWriteD, ALUSrcD, 
-				FlagWriteD, ALUControlD, CondD, Rd1D, Rd2D, Rs, ExtD,
-				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, 
+				FlagWriteD, ALUControlD, CondD, RdD, Rd1D, Rd2D, Rs, ExtD,
+				PCSrcE, RegWriteE, MemtoRegE, MemWriteE, ALUSrcE, FlagWriteE, ALUControlE, CondE, RdE, 
 				Rd1E, Rd2E, RsE, ExtE);
 		
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
