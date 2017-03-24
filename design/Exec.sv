@@ -60,7 +60,7 @@ module Exec(
 		// INPUT clk, reset, [3:0] cond, [3:0] ALUFlags
 		// INPUT [1:0] FlagW, PCS, RegW, MemW,
 		// OUTPUT PCSrc, RegWrite, MemWrite
-	condlogic cond (clk, reset, condE, ALUFlags, StatusRegister, Flags, FlagWriteE, PCS RegWriteE, MemWriteE, BranchD, PCSrcE,
+	condlogic cond (clk, reset, CondE, ALUFlags, StatusRegister, Flags, FlagWriteE, PCS RegWriteE, MemWriteE, BranchD, PCSrcE,
 		       RegWriteE, MemWriteE, BranchTakenE); 
 		
 		// INPUT [31:0] Rm, [7:0] RsShift, Immediate, [1:0] Sh, [4:0] Shamt, IsRegister, Carry
